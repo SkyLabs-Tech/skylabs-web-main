@@ -1,3 +1,15 @@
+# Node modules & build artefacts
 node_modules
+dist
+
+# Logs
+*.log
+npm-debug.log*
+
+# IDE / tooling
+.vscode
+.idea
+
+# Git
 .git
-.env
+.gitignore
