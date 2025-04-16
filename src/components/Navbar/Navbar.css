@@ -1,0 +1,70 @@
+@import url(https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap);
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #2D2F3A;
+    padding: 2px 20px;
+    font-family: "Montserrat", serif;
+  }
+
+  .sky-text{
+    color: #9CD7EC;
+    text-decoration: none;
+  }
+  
+  .labs-text{ 
+    color: #6346cc ;
+    text-decoration: none;
+  }
+
+  .developments-text{
+    color: #F0EFF4;
+    opacity: 70%;
+    padding: 5px 10px;
+  }
+  .logo-container{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    
+  }
+  
+  .logo{
+    width: 100px;  /* Ajusta el tamaño */
+    height: auto;
+    transition: all 0.3s;
+    
+  }
+
+  .logo:hover{
+    transform: scale(1.2);
+  }
+  .navbar-brnd {
+    color: #F0EFF4;
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: bold;
+
+  }
+  
+  .navbar-links {
+    list-style: none;
+    display: flex;
+    
+  }
+  
+  .navbar-links li {
+    margin-left: 40px;
+  }
+  
+  .navbar-links {
+    color: #F0EFF4;
+    text-decoration: none;
+    font-size: 18px;
+  }
+  
+  .navbar-links li:hover {
+    color: #48BFE3;
+    cursor: pointer;
+  }

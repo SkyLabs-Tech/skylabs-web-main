@@ -1,0 +1,57 @@
+.icons-container {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  padding: 20px;
+  background-color: #2D2F3A;
+}
+
+.icon-circle {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background-color: #F0EFF4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  text-align: center;
+  padding: 10px;
+  transition: all 0.3s;
+}
+
+.icon-circle:hover {
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+.icon {
+  font-size: 50px;
+}
+
+/* Colores de los iconos */
+.purple {
+  color: #493B9A;
+}
+
+.blue {
+  color: #48BFE3;
+}
+
+/* Cambia el fondo cuando se hace clic */
+.icon-circle.purple {
+  background-color: #493B9A;
+}
+
+.icon-circle.blue {
+  background-color: #48BFE3;
+}
+
+/* Estilo para el texto cuando se muestra */
+.button-text {
+  color: #F0EFF4;
+  font-weight: bold;
+  font-size: 14px;
+  text-align: center;
+}
