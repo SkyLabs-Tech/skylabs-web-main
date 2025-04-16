@@ -1,31 +1,33 @@
-# ── Build Stage ────────────────────────────────────────────────
+# Use an official Node.js runtime as the base image (version 20 or higher)
 FROM node:20-slim AS builder
+
+# Set the working directory in the container
 WORKDIR /app
 
-# Install dependencies (clean, reproducible & cache‑friendly)
+# Copy package.json and package-lock.json to the working directory
 COPY package*.json ./
+COPY package-lock.json ./
+
+# Install dependencies
 RUN npm ci
 
-# Copy source & build
+# Copy the rest of the application code
 COPY . .
-RUN npm run build \
-    && npm prune --omit=dev   # drop dev‑deps from final image
 
-# ── Runtime Stage ──────────────────────────────────────────────
+# Build the application
+RUN npm run build
+
+# Use a smaller image for production
 FROM node:20-slim
+
+# Set the working directory in the container
 WORKDIR /app
 
-# Copy only production artefacts
-COPY --from=builder /app/dist          ./dist
-COPY --from=builder /app/node_modules  ./node_modules
+# Copy only the necessary files from the builder stage
+COPY --from=builder /app/package*.json ./
+COPY --from=builder /app/package-lock.json ./
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/dist ./dist
 
-# Environment
-ENV NODE_ENV=production
-ENV PORT=8080
-EXPOSE 8080
-
-# Run as non‑root for security
-USER node
-
-# Start server (Cloud Run passes $PORT)
-CMD ["npm","run","start"]
+# Define the command to run the application
+CMD ["npm", "run", "start"]
