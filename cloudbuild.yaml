@@ -1,10 +1,16 @@
 steps:
   - name: "gcr.io/cloud-builders/docker"
-    args: [
-      "build",
-      "-t", "gcr.io/$PROJECT_ID/skylabs-web:$COMMIT_SHA",
-      "."
-    ]
+    args:
+      - "build"
+      - "-t"
+      - "gcr.io/$PROJECT_ID/skylabs-web:$COMMIT_SHA"
+      - "."
+    id: Build
+  - name: "gcr.io/cloud-builders/docker"
+    args:
+      - "push"
+      - "gcr.io/$PROJECT_ID/skylabs-web:$COMMIT_SHA"
+    id: Push
 images:
   - "gcr.io/$PROJECT_ID/skylabs-web:$COMMIT_SHA"
 options:
